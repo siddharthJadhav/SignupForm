@@ -7,9 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
+  user = {
+    firstName: '',
+    middleName: '',
+    lastName: '',
+    phoneNumber: '',
+    password: '',
+    conformPassword: ''
+  };
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  signUp(event) {
+    console.log('signup : ', event);
+    event.preventDefault();
+    console.log('user data : ', this.user);
   }
 
 }

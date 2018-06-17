@@ -1,3 +1,31 @@
-<p>
-  signup works!
-</p>
+<div class="card card-body mb-3 mt-3 ml-3 mr-3">
+<form (submit)="signUp($event)">
+  <div class="form-group">
+    <label>First Name</label>
+    <input type="text" [(ngModel)]="user.firstName" class="form-control" name="firstName">
+  </div>
+  <div class="form-group">
+    <label>Middle Name</label>
+    <input type="text" [(ngModel)]="user.middleName" class="form-control" name="middleName">
+  </div>
+  <div class="form-group">
+    <label>Last Name</label>
+    <input type="text" [(ngModel)]="user.lastName" class="form-control" name="lastName">
+  </div>
+  <div class="form-group">
+    <label>Phone number</label>
+    <input type="number" [(ngModel)]="user.phoneNumber" class="form-control" name="phoneNumber">
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input type="text" [(ngModel)]="user.password" class="form-control" name="password">
+  </div>
+  <div class="form-group">
+    <label>Conform Password</label>
+    <input type="text" [(ngModel)]="user.conformPassword" class="form-control" name="conformPassword">
+  </div>
+  <div class="form-group">
+    <button>Sign up</button>
+  </div>
+</form>
+</div>
