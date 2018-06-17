@@ -3,10 +3,10 @@
     <a class="navbar-brand">Angular App</a>
     <div>
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
+        <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
           <a routerLink="/" class="nav-link">singup</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
           <a routerLink="/home" class="nav-link">Home</a>
         </li>
       </ul>
