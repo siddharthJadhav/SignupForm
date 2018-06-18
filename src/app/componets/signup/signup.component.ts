@@ -12,6 +12,7 @@ export class SignupComponent implements OnInit {
     middleName: '',
     lastName: '',
     phoneNumber: '',
+    email: '',
     password: '',
     conformPassword: ''
   };
