@@ -33,12 +33,9 @@
   </div>
   <div class="form-group">
     <label>Phone number</label>
-    <input type="number" [(ngModel)]="user.phoneNumber" class="form-control" name="phoneNumber" required minlength="10" #userPhoneNumber="ngModel" [ngClass]="{'is-invalid': userPhoneNumber?.errors && userPhoneNumber?.touched}">
+    <input type="number" [(ngModel)]="user.phoneNumber" class="form-control" name="phoneNumber" required #userPhoneNumber="ngModel" [ngClass]="{'is-invalid': userPhoneNumber?.errors && userPhoneNumber?.touched}">
     <div *ngIf="userPhoneNumber?.errors?.required" class="invalid-feedback">
       <div>Phonenumber is required</div>
-    </div>
-    <div *ngIf="userPhoneNumber?.errors?.minlength">
-      <div>Minimum 10 digit are required</div>
     </div>
   </div>
   <div class="form-group">
@@ -53,11 +50,23 @@
   </div>
   <div class="form-group">
     <label>Password</label>
-    <input type="text" [(ngModel)]="user.password" class="form-control" name="password">
+    <input type="text" [(ngModel)]="user.password" class="form-control" name="password" required minlength="6" #userPassword="ngModel" [ngClass]="{'is-invalid': userPassword?.errors && userPassword?.touched}">
+    <div *ngIf="userPassword?.errors?.required" class="invalid-feedback">
+      <div>Password is required</div>
+    </div>
+    <div *ngIf="userPassword?.errors?.minlength" class="invalid-feedback">
+      <div>Minimum 6 character is required</div>
+    </div>
   </div>
   <div class="form-group">
     <label>Conform Password</label>
-    <input type="text" [(ngModel)]="user.conformPassword" class="form-control" name="conformPassword">
+    <input type="text" [(ngModel)]="user.conformPassword" class="form-control" name="conformPassword" required #userConformPassword="ngModel" [ngClass]="{'is-invalid': (userConformPassword?.errors || userConformPassword?.value != userPassword?.value) && userConformPassword?.touched}">
+    <div *ngIf="userConformPassword?.errors?.required" class="invalid-feedback">
+      <div>This field is required</div>
+    </div>
+    <div *ngIf="!userConformPassword?.errors && userConformPassword?.value != userPassword?.value" class="invalid-feedback">
+      <div>password and conform password are not match</div>
+    </div>
   </div>
   <div class="form-group">
     <button [disabled]="!signupForm.form.valid" class="form-control btn btn-primary">Sign up</button>

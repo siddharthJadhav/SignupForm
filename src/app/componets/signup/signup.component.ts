@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-signup',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+
+  @ViewChild('signupForm') signupForm: any;
 
   user = {
     firstName: '',
@@ -22,10 +24,15 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
   }
 
-  signUp(event) {
-    console.log('signup : ', event);
-    event.preventDefault();
-    console.log('user data : ', this.user);
+  signUp({value, valid}) {
+    console.log('value : ', value);
+    console.log('valid : ', valid);
+    console.log('signupForm : ', this.signupForm);
+    if (valid) {
+      console.log('form is valid');
+    } else {
+      console.log('form is invalid');
+    }
   }
 
 }
