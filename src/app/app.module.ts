@@ -7,6 +7,7 @@ import { SignupComponent } from './componets/signup/signup.component';
 import { HomeComponent } from './componets/home/home.component';
 import { NavbarComponent } from './componets/navbar/navbar.component';
 import { FormsModule } from '@angular/Forms';
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { FormsModule } from '@angular/Forms';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { DataService } from './../../services/data.service';
 
 @Component({
   selector: 'app-signup',
@@ -19,9 +20,17 @@ export class SignupComponent implements OnInit {
     conformPassword: ''
   };
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.dataService.getData().subscribe(res => {
+      console.log(res);
+    });
+
+    this.dataService.getUser().subscribe(res => {
+      console.log('user Data : ', res);
+    });
+
   }
 
   signUp({value, valid}) {
