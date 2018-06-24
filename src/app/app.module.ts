@@ -8,20 +8,12 @@ import { HomeComponent } from './componets/home/home.component';
 import { NavbarComponent } from './componets/navbar/navbar.component';
 import { FormsModule } from '@angular/Forms';
 import { DataService } from './services/data.service';
-
+import { PostService } from './services/post.service';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
-  declarations: [
-    AppComponent,
-    SignupComponent,
-    HomeComponent,
-    NavbarComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule
-  ],
-  providers: [DataService],
+  declarations: [ AppComponent, SignupComponent, HomeComponent, NavbarComponent],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  providers: [DataService, PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
