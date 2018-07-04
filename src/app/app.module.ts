@@ -10,8 +10,9 @@ import { FormsModule } from '@angular/Forms';
 import { DataService } from './services/data.service';
 import { PostService } from './services/post.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PostFormComponent } from './componets/post-form/post-form.component';
 @NgModule({
-  declarations: [ AppComponent, SignupComponent, HomeComponent, NavbarComponent],
+  declarations: [ AppComponent, SignupComponent, HomeComponent, NavbarComponent, PostFormComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [DataService, PostService],
   bootstrap: [AppComponent]
