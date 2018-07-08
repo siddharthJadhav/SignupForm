@@ -1,5 +1,5 @@
 import { Post } from './../../model/post';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
 import { PostService } from '../../services/post.service';
 
 @Component({
@@ -14,8 +14,9 @@ export class PostFormComponent implements OnInit {
     title: '',
     body: ''
   };
+  @Output() newPost: EventEmitter<Post> = new EventEmitter();
 
-  @ViewChild('postForm') signupForm: any;
+  @ViewChild('postForm') postForm: any;
 
   constructor(private postService: PostService) { }
 
@@ -26,6 +27,9 @@ export class PostFormComponent implements OnInit {
     console.log('post : ', form.value);
     this.postService.createPost({title: form.value.title, body: form.value.body} as Post).subscribe((data: any) => {
       console.log('post created sucessfully : ', data);
+      this.newPost.emit(data);
+      // form.reset(); // both command are work for resetting form
+      this.postForm.reset();
     });
   }
 

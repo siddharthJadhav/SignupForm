@@ -24,4 +24,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  newPostCreated(post: Post) {
+    this.posts.unshift(post);
+  }
+
 }
