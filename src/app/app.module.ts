@@ -11,9 +11,10 @@ import { DataService } from './services/data.service';
 import { PostService } from './services/post.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PostFormComponent } from './componets/post-form/post-form.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 @NgModule({
   declarations: [ AppComponent, SignupComponent, HomeComponent, NavbarComponent, PostFormComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, AngularFontAwesomeModule],
   providers: [DataService, PostService],
   bootstrap: [AppComponent]
 })
