@@ -1,11 +1,11 @@
-<app-post-form (newPost)="newPostCreated($event)"></app-post-form>
+<app-post-form (newPost)="newPostCreated($event)" [currentPost]="currentPost"></app-post-form>
 <H2>Posts</H2>
 <div class="card" *ngFor="let post of posts">
   <div class="card-body">
     <h3>{{post.title}}</h3>
     <p>{{post.body}}</p>
     <hr>
-    <button class="btn btn-danger"><i class="fa fa-remove"></i></button>
-    <button class="btn btn-light"><i class="fa fa-pencil"></i></button>
+    <button class="btn btn-danger" (click)="deletePost(post)"><i class="fa fa-remove"></i></button>
+    <button class="btn btn-light" (click)="updatePost(post)"><i class="fa fa-pencil"></i></button>
   </div>
 </div>

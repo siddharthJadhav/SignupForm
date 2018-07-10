@@ -10,6 +10,11 @@ import { Post } from '../../model/post';
 export class HomeComponent implements OnInit {
 
   posts: Post[];
+  currentPost: Post = {
+    id: 0,
+    title: '',
+    body: ''
+  };
 
   constructor(private postService: PostService) { }
 
@@ -26,6 +31,16 @@ export class HomeComponent implements OnInit {
 
   newPostCreated(post: Post) {
     this.posts.unshift(post);
+  }
+
+  deletePost(post: Post) {
+    console.log('deleted post : ', post);
+  }
+
+  updatePost(post: Post) {
+    console.log('update post : ', post);
+    this.currentPost = post;
+    console.log('posts : ', this.posts);
   }
 
 }

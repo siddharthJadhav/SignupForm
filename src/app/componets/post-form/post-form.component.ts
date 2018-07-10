@@ -1,5 +1,5 @@
 import { Post } from './../../model/post';
-import { Component, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, ViewChild, EventEmitter, Output, Input } from '@angular/core';
 import { PostService } from '../../services/post.service';
 
 @Component({
@@ -10,11 +10,15 @@ import { PostService } from '../../services/post.service';
 export class PostFormComponent implements OnInit {
 
   title: string;
-  post = {
+  // post = {
+  //   title: '',
+  //   body: ''
+  // };
+  @Output() newPost: EventEmitter<Post> = new EventEmitter();
+  @Input() currentPost = {
     title: '',
     body: ''
   };
-  @Output() newPost: EventEmitter<Post> = new EventEmitter();
 
   @ViewChild('postForm') postForm: any;
 
