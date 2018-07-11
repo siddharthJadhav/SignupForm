@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
     title: '',
     body: ''
   };
+  isEdit: boolean;
 
   constructor(private postService: PostService) { }
 
@@ -40,6 +41,7 @@ export class HomeComponent implements OnInit {
   updatePost(post: Post) {
     console.log('update post : ', post);
     this.currentPost = post;
+    this.isEdit = true;
     console.log('posts : ', this.posts);
   }
 
