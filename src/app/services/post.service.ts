@@ -1,7 +1,7 @@
+import { Post } from './../model/post';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Post } from '../model/post';
 
 const headerOption = {
   headers: new HttpHeaders({'Content-Type' : 'application/json'})
@@ -29,8 +29,9 @@ export class PostService {
     return this.http.put(url, postData, headerOption);
   }
 
-  deletePost(postData) {
-    const url = `${this.postUrl}/${postData.id}`;
+  deletePost(postData: Post | number) {
+    const id = typeof postData === 'number' ? postData : postData.id ;
+    const url = `${this.postUrl}/${id}`;
     return this.http.delete(url);
   }
 
