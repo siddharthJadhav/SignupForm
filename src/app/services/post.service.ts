@@ -29,4 +29,9 @@ export class PostService {
     return this.http.put(url, postData, headerOption);
   }
 
+  deletePost(postData) {
+    const url = `${this.postUrl}/${postData.id}`;
+    return this.http.delete(url);
+  }
+
 }

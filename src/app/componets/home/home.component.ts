@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from './../../services/post.service';
 import { Post } from '../../model/post';
-import { element } from 'protractor';
 
 @Component({
   selector: 'app-home',
@@ -38,6 +37,13 @@ export class HomeComponent implements OnInit {
 
   deletePost(post: Post) {
     console.log('deleted post : ', post);
+    this.postService.deletePost(post).subscribe(res => {
+      this.posts.forEach((elements, index) => {
+        if (elements.id === post.id) {
+          this.posts.splice(index, 1);
+        }
+      });
+    });
   }
 
   updatePost(post: Post) {
