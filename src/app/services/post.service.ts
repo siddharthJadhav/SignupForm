@@ -24,4 +24,9 @@ export class PostService {
     return this.http.post<Post>(this.postUrl, postData, headerOption);
   }
 
+  updatePost(postData) {
+    const url = `${this.postUrl}/${postData.id}`;
+    return this.http.put(url, postData, headerOption);
+  }
+
 }

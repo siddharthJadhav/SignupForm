@@ -17,6 +17,7 @@ export class PostFormComponent implements OnInit {
   @Output() newPost: EventEmitter<Post> = new EventEmitter();
   @Input() currentPost: Post;
   @Input() isEdit: boolean;
+  @Output() isUpdatePost: EventEmitter<any> = new EventEmitter();
 
   @ViewChild('postForm') postForm: any;
 
@@ -31,13 +32,18 @@ export class PostFormComponent implements OnInit {
       console.log('post created sucessfully : ', data);
       this.newPost.emit(data);
       // form.reset(); // both command are work for resetting form
-      // this.postForm.reset();
+      this.postForm.reset();
     });
   }
 
   updatePost(form) {
     console.log('update post : ', form.value);
     console.log('current post : ', this.currentPost);
+    this.postService.updatePost(this.currentPost).subscribe(res => {
+      console.log('res : ', res);
+      this.postForm.reset();
+      this.isUpdatePost.emit(res);
+    });
   }
 
 }

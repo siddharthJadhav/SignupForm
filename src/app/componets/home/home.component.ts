@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from './../../services/post.service';
 import { Post } from '../../model/post';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-home',
@@ -31,6 +32,7 @@ export class HomeComponent implements OnInit {
   }
 
   newPostCreated(post: Post) {
+    console.log('new post created : ', post);
     this.posts.unshift(post);
   }
 
@@ -43,6 +45,18 @@ export class HomeComponent implements OnInit {
     this.currentPost = post;
     this.isEdit = true;
     console.log('posts : ', this.posts);
+    window.scroll(0, 0);
+  }
+
+  isUpdatePost(post) {
+    console.log('post updated sucessfully : ', post);
+    this.posts.forEach((elements, index) => {
+      if (elements.id === post.id) {
+        this.posts.splice(index, 1);
+        this.posts.unshift(post);
+        this.isEdit = false;
+      }
+    });
   }
 
 }
